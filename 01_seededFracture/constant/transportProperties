@@ -15,6 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+transportModel Newtonian;
+
+Kinv         Kinv [ 0 -2 0 0 0 0 0 ] 0.0;        // Inverse permeability = 12/h^2
 nu             nu [ 0 2 -1 0 0 0 0 ] 2.5e+1;     // b^2/s (b is length unit)
 D               D [ 0 2 -1 0 0 0 0 ] 2.5e-2;     // b^2/s
 l_T                                  0.5;        // Reactive length D/kb

@@ -10,7 +10,7 @@ Test cases for dissolFoam solver.
 * gypsumExperiment
 
 
-* dissolParaH
+* dissolParaH: Example when the added drag force from channel walls is not zero
 
 
 * triangle

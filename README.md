@@ -1,7 +1,7 @@
 # dissolFoamTestCases
 Test cases for dissolFoam solver.
 
-* seededFracture
+* seededFracture: Dissolution of the flat fracture with small perturbation at the inlet
 
 
 * cylinder

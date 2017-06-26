@@ -1,3 +1,15 @@
+# OpenFOAM and dissolFoam files and directories
+processor*/
+log.*
+0/
+5/
+10/
+15/
+20/
+*.gz
+boundary
+
+
 # Dependencies
 *.dep
 

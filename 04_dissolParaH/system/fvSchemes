@@ -11,45 +11,50 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      controlDict;
+    object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     dissolFoam;
+ddtSchemes
+{
+    default         steadyState;
+}
 
-startFrom       latestTime;
+gradSchemes
+{
+    default         Gauss linear;
+}
 
-startTime       0;
+divSchemes
+{
+    default         bounded Gauss upwind;
+}
 
-stopAt          endTime;
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
 
-endTime         20;
+interpolationSchemes
+{
+    default         linear;
+}
 
-deltaT          0.1;
+snGradSchemes
+{
+    default         corrected;
+}
 
-writeControl    runTime;
+fluxRequired
+{
+    default         no;
+    p               ;
+}
 
-writeInterval   5;
-
-purgeWrite      0;
-
-writeFormat     ascii;
-
-writePrecision  10;
-
-writeCompression on;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable true;
-
-libs
-(
-    "libdissolMotionPointPatchVectorField.so"
-    "libnonLinearFvPatchScalarField.so"
-    "libdanckwertsFvPatchScalarField.so"
-);
+fluxRequired
+{
+    default         no;
+    C               ;
+}
 
 // ************************************************************************* //

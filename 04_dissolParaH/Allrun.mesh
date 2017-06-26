@@ -1,0 +1,24 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Generate stl files for box and object
+
+runGen -g parabola
+runGen -d genDict
+mv blockMeshDict system/obj.blockMeshDict
+rm genDict
+
+blockMesh -dict system/obj.blockMeshDict 2>&1 | tee log.blockMeshObj 2>&1
+transformPoints -translate '(0 16.5 0)'
+transformPoints -scale '(1 1 0.5)'
+surfaceMeshTriangulate -patches "(solubleWall)" constant/triSurface/obj.stl 2>&1 | tee log.surfaceMeshTriangulateObj 2>&1
+surfaceOrient -inside constant/triSurface/obj.stl "(0 -1 0)" constant/triSurface/obj.stl 2>&1 | tee log.surfaceOrient 2>&1
+
+blockMesh -dict system/box.blockMeshDict 2>&1 | tee log.blockMeshBox 2>&1
+surfaceMeshTriangulate -patches "(inlet outlet insolubleWall)" constant/triSurface/box.stl 2>&1 | tee log.surfaceMeshTriangulateBox 2>&1
+surfaceFeatureExtract 2>&1 | tee log.surfaceFeatureExtract 2>&1
+
+cat constant/triSurface/box.stl constant/triSurface/obj.stl > constant/triSurface/geom.stl
+
+cartesian2DMesh 2>&1 | tee log.cartesian2DMesh
+checkMesh -allGeometry -allTopology -constant -noZero 2>&1 | tee log.checkMesh 2>&1
+
+#------------------------------------------------------------------------------

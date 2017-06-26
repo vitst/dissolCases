@@ -15,11 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-transportModel Newtonian;
-
-nu             nu [ 0 2 -1 0 0 0 0 ] 1.0  ;      // <v> = 1
-D               D [ 0 2 -1 0 0 0 0 ] 0.0225;      // Pe =  1/D
-l_T                                  0.5  ;      // Reactive length D/k
+nu             nu [ 0 2 -1 0 0 0 0 ] 2.5e+1;     // b^2/s (b is length unit)
+D               D [ 0 2 -1 0 0 0 0 ] 2.5e-2;     // b^2/s
+l_T                                  0.5;        // Reactive length D/kb
 
 
 

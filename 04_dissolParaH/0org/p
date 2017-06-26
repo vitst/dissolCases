@@ -9,47 +9,47 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      controlDict;
+    class       volScalarField;
+    object      p;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     dissolFoam;
+dimensions      [0 2 -2 0 0 0 0];
 
-startFrom       latestTime;
+internalField   uniform 0;
 
-startTime       0;
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 400.0;          // Pressure drop (m/s)^2
+        //type            zeroGradient;
+    }
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 0.0;
+    }
 
-stopAt          endTime;
+    insolubleWall
+    {
+        type            zeroGradient;
+    }
 
-endTime         20;
+    top
+    {
+        type            empty;
+    }
+    bottom
+    {
+        type            empty;
+    }
 
-deltaT          0.1;
-
-writeControl    runTime;
-
-writeInterval   5;
-
-purgeWrite      0;
-
-writeFormat     ascii;
-
-writePrecision  10;
-
-writeCompression on;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable true;
-
-libs
-(
-    "libdissolMotionPointPatchVectorField.so"
-    "libnonLinearFvPatchScalarField.so"
-    "libdanckwertsFvPatchScalarField.so"
-);
+    solubleWall
+    {
+        type            zeroGradient;
+    }
+}
 
 // ************************************************************************* //

@@ -15,10 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+dissolDebug             false;    // Solver flags
 gradCWrite              false;
-inertia                 false;
-limitFlux               false;
+inertia                 true;
+limitFlux               true;
 constFlux               false;
-limitValue                1.0;
+limitValue              125.0;
 
 // ************************************************************************* //

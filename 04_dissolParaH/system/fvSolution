@@ -31,11 +31,19 @@ solvers
 
     U
     {
+
         solver                  smoothSolver;
         smoother                GaussSeidel;
         tolerance               1e-9;
         relTol                  0.4;
         nSweeps                 10;
+/*
+        type                    coupled;
+        solver                  PBiCCCG;
+        preconditioner          DILU;
+        tolerance               (1e-9 1e-9 1e-9);
+        relTol                  (4e-1 4e-1 4e-1);
+*/
     }
 
     C
@@ -43,10 +51,10 @@ solvers
         solver                  GAMG;
         smoother                GaussSeidel;
         agglomerator            faceAreaPair;
-        nCellsInCoarsestLevel   20;
+        nCellsInCoarsestLevel   10;
         mergeLevels             1;
         tolerance               1e-9;
-        relTol                  1e-2;
+        relTol                  1e-9;
     }
 
     cellMotionU
@@ -60,28 +68,27 @@ solvers
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors    1;
-    consistent                yes;
-    pRefCell                    0;
-    pRefValue                   0;
+    nNonOrthogonalCorrectors  1;
+    consistent              yes;
+    pRefCell                  0;
+    pRefValue                 0;
 
     residualControl
     {
-        p                       1e-6;
-        U                       1e-6;
+        p                  1e-6;
+        U                  1e-6;
     }
 }
 
 relaxationFactors
 {
-//    fields
-//    {
-//        p                       0.05;
-//    }
+    fields
+    {
+        p                       0.3;
+    }
     equations
     {
-        U               0.9;
-        ".*"            0.9; // 0.9 is more stable but 0.95 more convergent
+        U                       0.7;
     }
 }
 

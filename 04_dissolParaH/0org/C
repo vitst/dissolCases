@@ -10,11 +10,11 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      p;
+    object      C;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+dimensions      [0 0 0 0 0 0 0];
 
 internalField   uniform 0;
 
@@ -23,29 +23,52 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 0.0;          // Pressure drop (m/s)^2
+        value           uniform 1.0;
     }
-
     outlet
-    {
-        type            fixedValue;
-        value           uniform -1.5e7;
-    }
-
-    walls
     {
         type            zeroGradient;
     }
 
-    periodicx1
+
+    insolubleWall
     {
-        type            cyclic;
-    }
-    periodicx2
-    {
-        type            cyclic;
+        type            zeroGradient;
     }
 
+    top
+    {
+        type            empty;
+    }
+    bottom
+    {
+        type            empty;
+    }
+
+    solubleWall
+    {
+        type            codedMixed;
+        value           uniform 0.0;
+
+        refValue        uniform 0;
+        refGradient     uniform 0;
+        valueFraction   uniform 1;
+
+        name    codedNonLinear;   // name of generated BC
+
+        codeOptions     "-I/home/tladd/OpenFOAM/tladd-4.x/applications/libsFoamAux/boundaryConditions";
+
+        code
+        #{
+            #include "nonLinear.H"
+        #};
+
+        codeInclude
+        #{
+            #include "addToRunTimeSelectionTable.H"
+            #include "plane.H"
+        #};
+    }
 }
 
 // ************************************************************************* //

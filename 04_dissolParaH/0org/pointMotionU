@@ -23,47 +23,53 @@ boundaryField
 {
     inlet
     {
+      type            fixedValue;
+      value           uniform (0 0 0);
+    }
+    outlet
+    {
+      type            fixedValue;
+      value           uniform (0 0 0);
+    }
+
+    insolubleWall
+    {
+      type            fixedNormalSlip;
+      value           uniform (0 0 0);
+      n               (0 1 0);
+    }
+
+    top
+    {
       type            fixedNormalSlip;
       value           uniform (0 0 0);
       n               (0 0 1);
-
     }
-
-    outlet
+    bottom
     {
       type            fixedNormalSlip;
       value           uniform (0 0 0);
       n               (0 0 1);
     }
 
-    walls
+    solubleWall
     {
       type            dissolMotion;
       value           uniform (0 0 0);
 
-      rlxTol          1e-6;
+      rlxTol          1e-5;
       q_norm_recalc   1;
       k_1             1.0;
-      k_2             1.3;
+      k_2             1.0;
       q_2             5;
 
       q_norm_recalc_edge   1;
       k_1edge              1.0;
-      k_2edge              1.3;
+      k_2edge              1.0;
       q_2edge              10;
-
-      pinnedPoint     false;
+      
+      pinnedPoint     true;
     }
-
-    periodicx1
-    {
-      type            cyclicSlip;
-    }
-    periodicx2
-    {
-      type            cyclicSlip;
-    }
-
 }
 
 // ************************************************************************* //

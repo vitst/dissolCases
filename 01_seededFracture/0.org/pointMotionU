@@ -41,12 +41,17 @@ boundaryField
       type            dissolMotion;
       value           uniform (0 0 0);
 
+      scaleMotion     1.0;
+
       rlxTol          1e-6;
+
+      surfaceRlx      true;
       q_norm_recalc   1;
       k_1             1.0;
       k_2             1.3;
       q_2             5;
 
+      edgeRlx              true;
       q_norm_recalc_edge   1;
       k_1edge              1.0;
       k_2edge              1.3;

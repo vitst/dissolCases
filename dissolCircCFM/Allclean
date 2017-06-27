@@ -6,7 +6,6 @@ cd ${0%/*} || exit 1    # run from this directory
 
 cleanCase
 rm -rf processor* 0
-rm -rf *.obj constant/extendedFeatureEdgeMesh *.fms
 rm -f constant/polyMesh/boundary
 rm -f constant/polyMesh/meshMetaDict
 

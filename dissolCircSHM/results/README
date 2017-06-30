@@ -1,0 +1,16 @@
+The movies show the dissolution of a circular chip, comparing results
+with different grids.
+
+compareBlockMEsh.ogv: compares the coarse snappyHexMesh grid
+    with a blockMesh grid (80400 cells).
+compareResolution.ogv: compares a coarse snappyHexMesh grid
+    (49224 cells) with a fine snappyHexMesh grid (147219 cells).
+compareResolution.ogv: compares Uy field for coarse and fine
+    snappyHexMesh grids. The oscillations in the coarse grid
+    disappear at the higher resolution. They do not affect the
+    dissolution because they are outside the concentration
+    boundary layer.
+
+Preliminary tests of the mesh are in the grids directory.
+
+The current system/box.blockMeshDict corresponds to the coarse grid.

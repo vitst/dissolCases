@@ -25,6 +25,12 @@ dissolCircCFM: commits 711457d/53f99f5
     C.ogv shows blockMesh generated solution (left) vs cfMesh (right)
     Script to make stl files not nesessary - requires genBlockMeshDict scripts 
 
+dissolCircSHM: commits acfa34a/f21ab74
+    Dissolution of a circle in a Hele-Shaw Cell - snappyHexMesh grid
+    Illustrates meshing and remeshing with snappyHexMesh
+    New names for scripts and 0org (Zero)
+    Comparisons with blockMesh grid in results directory
+
 
 * cylinder
 

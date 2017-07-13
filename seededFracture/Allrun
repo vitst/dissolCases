@@ -2,7 +2,7 @@
 cd ${0%/*} || exit 1    # run from this directory
 
 if [ ! -d "0" ]; then
-    cp -rp 0.org 0
+    cp -rp Zero 0
     blockMesh 2>& 1 | tee log.blockMesh
 fi
 
@@ -12,7 +12,7 @@ fi
 
 mpirun -np 8 dissolFoam -parallel 2>&1 | tee log.run
 
-diff 0/C 0.org/C > /dev/null 2>&1
+diff 0/C Zero/C > /dev/null 2>&1
 if [ $? ]; then
     reconstructPar -withZero 2>&1 | tee log.reconstruct
 else

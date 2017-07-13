@@ -35,9 +35,9 @@ boundaryField
     {
         type            nonLinear;
         value           uniform 0.0;
-	Cth		0.0;
-	n1		1.0;
-	n2		1.0;
+        Cth             0.0;
+        n1              1.0;
+        n2              1.0;
 
         limitPlane      false;
         refNormal       (0   0   1);

@@ -56,7 +56,8 @@ boundaryField
 
         name    codedNonLinear;   // name of generated BC
 
-        codeOptions     "-I/home/tladd/OpenFOAM/tladd-4.x/applications/libsFoamAux/boundaryConditions";
+        // here should be a path to boundaryConditions directory
+        codeOptions     "-I/a_path_to/libsFoamAux/boundaryConditions"; 
 
         code
         #{

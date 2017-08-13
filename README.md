@@ -1,9 +1,11 @@
 # dissolFoamTestCases: Test cases for dissolFoam solver
 
-The commit levels are for dissolFoam and libsFoamAux respectively
+Note: The OpenFOAM source has to be patched from
+    patches-OpenFOAM-v3.xPlus-unofficial
+    The commit levels are for dissolFoam and libsFoamAux respectively
 
-seededFracture: commits acfa34a/1521d11 
-    Dissolution of the flat fracture with small perturbation at the inlet
+seededFracture: OFv1612 / commits acfa34a/1521d11 
+    Dissolution of a flat fracture with small perturbation at the inlet
     Includes new flags for dissolMotion solver in pointMotionU
     scaleMotion   1.0;  -- scales the point displacement
     surfaceRlx    true; -- switches on/off relaxation on the patch
@@ -30,6 +32,11 @@ dissolCircSHM: OF4.1 / commits acfa34a/f21ab74
     Illustrates meshing and remeshing with snappyHexMesh
     New names for scripts and 0org (Zero)
     Comparisons with blockMesh grid in results directory
+
+dissolFrac: OFv1706.1 / commits 825c2f8/6b47d0f
+    Dissolution of a fracture in a microfluidic cell
+    Simulation of experiments by Florian Osselin
+    New Run scripts - parallel configuration on the fly
 
 
 * cylinder

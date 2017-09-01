@@ -1,0 +1,27 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//  Units: l0 unit of point field and <v> = Q/A  //
+
+transportModel Newtonian;
+
+Kinv         Kinv [ 0 -2 0 0 0 0 0 ] 0.0;     // Inverse permeability
+nu             nu [ 0 2 -1 0 0 0 0 ] 485;     // nu/<v>*l0
+D               D [ 0 2 -1 0 0 0 0 ] 0.437;   // D/<v>*l0
+lR             lR [ 0 1  0 0 0 0 0 ] 0.9;     // Reactive length D/k
+
+// ************************************************************************* //

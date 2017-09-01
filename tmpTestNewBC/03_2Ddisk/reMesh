@@ -7,6 +7,18 @@ else
     startTime=$1
 fi
 
+if [ -z ${2+x} ]; then          # startTime=0 if undefined
+    reIter=0
+else
+    reIter=$2
+fi
+
+initRef=2
+lastRef=1
+
+#echo "Debug. reIter : $reIter"
+#exit 0
+
 endTime=`cat system/controlDict | grep "endTime " \
     | awk '{print $2}' | sed -e '/;/s///'`
 echo "Run started at t = $startTime and ended at t = $endTime"
@@ -42,8 +54,13 @@ else
 fi
 mv [0-9]* Save
 
+# modify snappyHexMesh to make surface cell smaller
+#sed -i -e "/level (/s/$($reIter+1) $($reIter+1)/$($reIter+1) $($reIter+1)/" system/snappyHexMeshDict
+echo "modify snappyHexMesh:  last: $(($reIter+$lastRef))  next: $(($reIter+$initRef))"
+sed -i -e "/level (/s/$(($reIter+$lastRef)) $(($reIter+$lastRef))/$(($reIter+$initRef)) $(($reIter+$initRef))/" system/snappyHexMeshDict
+
 #  Make new mesh
 ./Clean
-./makeMesh
+./makeMesh $3
 
 # ------------------------------------------------------------------- #

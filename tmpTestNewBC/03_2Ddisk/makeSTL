@@ -1,0 +1,32 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# use genBlockMeshDict to make the object mesh
+runGen -g cylinder
+runGen -d genDict
+mv blockMeshDict system/obj.blockMeshDict
+rm genDict
+
+# generate mesh for obj
+blockMesh -dict system/obj.blockMeshDict 2>&1 \
+    | tee log.blockMeshObj 2>&1
+
+# get object surface as a ribbon - transform points to match box
+surfaceMeshTriangulate -patches "(walls)" \
+    constant/triSurface/obj.stl 2>&1 \
+    | tee log.surfaceMeshTriangulateObj 2>&1
+surfaceTransformPoints -scale '(1 1 2)' \
+    constant/triSurface/obj.stl constant/triSurface/obj.stl 2>&1 \
+    | tee log.surfaceMeshTriangulateObj 2>&1
+surfaceTransformPoints -translate '(14 16.5 -0.5)' \
+    constant/triSurface/obj.stl constant/triSurface/obj.stl 2>&1 \
+    | tee log.surfaceMeshTriangulateObj 2>&1
+
+# fix the orientation
+surfaceOrient -inside constant/triSurface/obj.stl "(0 0 0)" \
+    constant/triSurface/obj.stl 2>&1 | tee log.surfaceOrient 2>&1
+
+# edit patch name from cylinder generator
+sed -i -e '/walls/s//solubleWall/' constant/triSurface/obj.stl
+
+# ------------------------------------------------------------------- #

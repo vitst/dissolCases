@@ -22,8 +22,20 @@ boundaryField
 {
     inlet
     {
-        type            fixedValue;
-        value           uniform 1.0;
+        type            codedMixed;
+        value           uniform 1;
+        refValue        uniform 0;
+        refGradient     uniform 0;
+        valueFraction   uniform 1;
+        name            codedDanckwerts;
+        codeInclude
+        #{
+            #include "addToRunTimeSelectionTable.H"
+        #};
+        code
+        #{
+            #include "../../constant/bcInclude/danckwerts.H"
+        #};
     }
 
     outlet
@@ -53,7 +65,7 @@ boundaryField
         refValue        uniform 0;
         refGradient     uniform 0;
         valueFraction   uniform 1;
-        name    codedNonLinear;
+        name    codedNonlinear;
         codeInclude
         #{
             #include "addToRunTimeSelectionTable.H"
@@ -61,7 +73,7 @@ boundaryField
         #};
         code
         #{
-            #include "../../constant/bcInclude/nonLinear.H"
+            #include "../../constant/bcInclude/nonlinear.H"
         #};
     }
 }

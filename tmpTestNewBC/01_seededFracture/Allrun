@@ -12,7 +12,7 @@ if [ ! -d "processor0" ]; then
     decomposePar -copyUniform 2>&1 | tee log.decompose
 fi
 
-mpirun -np 8 dissolFoam -parallel 2>&1 | tee log.run
+mpirun -np 4 dissolFoam -parallel 2>&1 | tee log.run
 
 diff 0/C Zero/C > /dev/null 2>&1
 if [ $? ]; then

@@ -18,8 +18,8 @@ FoamFile
 writeFluxC              false;
 inertia                 false;
 limitFlux               true;
-constFlux               false;
-Qlim                    125.0;
+constFlux               true;
+Qlim                    16.5;
 
 
 // ************************************************************************* //

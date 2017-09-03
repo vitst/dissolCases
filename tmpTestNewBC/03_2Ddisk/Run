@@ -17,14 +17,14 @@ echo "Starting at t = $startTime with $np processors"
 
 if [ ! -d "$startTime" ]; then  # create starting directory
     cp -rp Zero $startTime
-    cp -rp constant/polyMesh $startTime
+    mv constant/polyMesh $startTime
 fi
 
 
 #  Run selection
 if [ $nproc -eq 1 ]; then
     echo "Running in serial"
-    dissolFoam 2>&1 | tee log.run
+    dissolFoam 2>&1 | tee log.dissolFoam
 
 else
 
@@ -35,7 +35,7 @@ else
         decomposePar -copyUniform 2>&1 | tee log.decompose
     fi
 
-    mpirun -np $nproc dissolFoam -parallel 2>&1 | tee log.run
+    mpirun -np $nproc dissolFoam -parallel 2>&1 | tee log.dissolFoam
 
     diff 0/C Zero/C > /dev/null 2>&1 
     if [ $? == 0 ]; then

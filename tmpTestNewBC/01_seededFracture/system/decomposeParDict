@@ -15,14 +15,14 @@ FoamFile
     }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains      8;
+numberOfSubdomains      4;
 
 preservePatches (periodicx1 periodicx2);
 
 method hierarchical;
 hierarchicalCoeffs
 {
-    n           (1 1 8);
+    n           (1 1 4);
     delta       0.001;
     order       zxy;
 }

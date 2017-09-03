@@ -17,13 +17,9 @@ FoamFile
 
 //  Units: l0 unit of point field and <v> = Q/A  //
 
-transportModel Newtonian;
-
-Kinv         Kinv [ 0 -2 0 0 0 0 0 ] 0.0;     // Inverse permeability
-nu             nu [ 0 2 -1 0 0 0 0 ] 2.5e+1;     // b^2/s (b is length unit)
-D               D [ 0 2 -1 0 0 0 0 ] 2.5e-2;     // b^2/s
-
-lR             lR [ 0 1  0 0 0 0 0 ] 0.5;     // Reactive length D/k
-l_T 0.5;     // Reactive length D/k
+Kinv         Kinv [ 0 -2 0 0 0 0 0 ] 48;         // Inverse permeability
+nu             nu [ 0 2 -1 0 0 0 0 ] 60;         // nu/<v>*l0
+D               D [ 0 2 -1 0 0 0 0 ] 0.06;       // D/<v>*l0
+lR             lR [ 0 1  0 0 0 0 0 ] 0.2;        // Reactive length D/k
 
 // ************************************************************************* //

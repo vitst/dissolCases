@@ -76,7 +76,7 @@ relaxationFactors
     equations
     {
         U               0.9;
-        C               0.9999;
+        C               1.0;
         ".*"            0.9; // 0.9 is more stable but 0.95 more convergent
     }
 }

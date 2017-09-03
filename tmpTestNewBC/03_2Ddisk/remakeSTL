@@ -1,12 +1,11 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Generate stl from existing surface
 
-surfaceMeshTriangulate -patches "(solubleWall)" \
-    -latestTime \
+surfaceMeshTriangulate -patches "(solubleWall)" -latestTime \
     constant/triSurface/obj.stl 2>&1 \
     | tee log.surfaceMeshTriangulateObj 2>&1
 
-surfaceTransformPoints -scale '(1 1 40)' \
+surfaceTransformPoints -scale '(1 1 4)' \
     constant/triSurface/obj.stl constant/triSurface/obj.stl 2>&1 \
     | tee log.surfaceMeshTriangulateObj 2>&1
 surfaceTransformPoints -translate '(0 0 -0.5)' \

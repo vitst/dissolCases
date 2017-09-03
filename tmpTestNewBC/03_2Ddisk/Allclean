@@ -1,9 +1,9 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # clean case
 
-./Clean
+Clean
 rm -rf Save
-rm constant/triSurface/*
+rm -f constant/triSurface/*
 
 echo
 echo "Directory cleaned: Make sure controlDict.template is up to date"

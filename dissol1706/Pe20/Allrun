@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cp -r Zero 0
+
+blockMesh 2>& 1 | tee log.blockMesh
+
+decomposePar -copyUniform 2>&1 | tee log.decompose
+
+mpirun -np 4 dissolFoam -parallel 2>&1 | tee log.run
+
+reconstructPar -withZero 2>&1 | tee log.reconstruct
+
+# ----------------------------------------------------------------- end-of-file

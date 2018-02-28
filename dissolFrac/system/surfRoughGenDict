@@ -14,20 +14,17 @@ FoamFile
     object      surfRoughGenDict;
 }
 
-patchName     solubleWall;
+// Methods: symmetric, synchronous, asymmetric, oneSurface, oneSurfaceDecay;
+apply               oneSurface;
+patchName           solubleWall;
 
-seed             513287;
+majSize             256;
+minSize             128;
+majDir              0;
+minDir              1;
 
-roughness            0.01;
+seed                513287;
+roughness           0.05;
+dHurst              0.5;
+smoothing           0.01;
 
-fractalParam           -1;
-
-smoothing           0.001;
-
-sizeMaj               128;
-sizeLat               128;
-
-majDir                   0;
-latDir                   1;
-
-apply                oneSurface; // symmetric, synchronous, asymmetric, oneSurface; 

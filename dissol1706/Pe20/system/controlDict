@@ -47,7 +47,7 @@ runTimeModifiable true;
 
 libs
 (
-    "liblocaldispLaplacianFvMotionSolver.so"
+    "libvelocityDeltatLaplacianFvMotionSolver.so"
     "libnormalMotionSlipPointPatchVectorField.so"
     "libnormalMotionSlipFvPatchVectorField.so"
 );

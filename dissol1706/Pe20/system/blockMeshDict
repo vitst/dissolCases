@@ -2060,6 +2060,18 @@ blocks
 
 boundary
 (
+    walls
+    {
+      type wall;
+      faces
+      (
+        ( 0   1   5   4)
+        ( 4   5   9   8)
+        ( 2   3   7   6)
+        ( 6   7  11  10)
+      );
+    }
+
     outlet
     {
       type patch;
@@ -2075,18 +2087,6 @@ boundary
       faces
       (
         (0  3  2  1)
-      );
-    }
-
-    walls
-    {
-      type wall;
-      faces
-      (
-        ( 0   1   5   4)
-        ( 4   5   9   8)
-        ( 2   3   7   6)
-        ( 6   7  11  10)
       );
     }
 

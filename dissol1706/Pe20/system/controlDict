@@ -52,4 +52,10 @@ libs
     "libnormalMotionSlipFvPatchVectorField.so"
 );
 
+DebugSwitches
+{
+    normalMotionSlip 1;
+}
+
+
 // ************************************************************************* //

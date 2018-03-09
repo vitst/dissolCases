@@ -25,6 +25,8 @@ boundaryField
     {
       type            normalMotionSlip;
       value           uniform (0 0 0);
+      field           C;
+      scalarName      lR;
     }
 
     inlet

@@ -25,6 +25,6 @@ solver             velocityDeltatLaplacian;
 velocityDeltatLaplacianCoeffs
 {
     diffusivity    uniform;
-    
+    tolerance      10e-3;
 }
 

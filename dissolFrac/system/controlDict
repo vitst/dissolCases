@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         100;
+endTime         300;
 
 deltaT          0.1;
 
@@ -48,6 +48,15 @@ runTimeModifiable true;
 libs
 (
     "libdissolMotionPointPatchVectorField.so"
+    "libvelocityDeltatLaplacianFvMotionSolver.so"
+    "libnormalMotionSlipPointPatchVectorField.so"
+    "libnormalMotionSlipFvPatchVectorField.so"
 );
+
+DebugSwitches
+{
+    velocityDeltatLaplacian     0;
+}
+
 
 // ************************************************************************* //

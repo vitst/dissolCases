@@ -1,9 +1,0 @@
-#!/bin/sh
-cd ${0%/*} || exit 1    # create mesh from blockMeshDict
-
-blockMesh
-
-checkMesh -allGeometry -allTopology -constant -noZero 2>&1 \
-    | tee log.checkMesh 2>&1
-
-# ------------------------------------------------------------------- #

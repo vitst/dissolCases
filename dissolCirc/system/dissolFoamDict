@@ -15,10 +15,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-gradCWrite              true;
-inertia                 false;
-limitFlux               true;
-constFlux               true;
-limitValue              16.5;
+writeFluxC              true;
+inertia                 true;
+limitFlux               false;
+constFlux               false;
+Qlim                    1;
 
 // ************************************************************************* //

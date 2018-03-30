@@ -1,9 +1,0 @@
-#!/bin/sh
-cd ${0%/*} || exit 1    # Generate stl from existing surface
-
-surfaceMeshTriangulate -patches "(solubleWall)" constant/triSurface/obj.stl 2>&1 | tee log.surfaceMeshTriangulateObj 2>&1
-
-cat constant/triSurface/box.stl constant/triSurface/obj.stl > constant/triSurface/geom.stl
-
-
-#------------------------------------------------------------------------------

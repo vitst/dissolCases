@@ -43,7 +43,7 @@ boundaryField
         refValue        uniform 0;
         refGradient     uniform 0;
         valueFraction   uniform 1;
-        name    codedNonlinear;
+        name    codedLinearPlane;
         codeInclude
         #{
             #include "addToRunTimeSelectionTable.H"
@@ -51,7 +51,7 @@ boundaryField
         #};
         code
         #{
-            #include "../../constant/bcInclude/nonlinear.H"
+            #include "../../constant/bcInclude/linearPlane.H"
         #};
     }
 }

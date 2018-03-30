@@ -5,7 +5,12 @@ cd ${0%/*} || exit 1    # Run from this directory
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
 runApplication blockMesh
-
 runApplication topoSet -constant
 
-runApplication checkMesh -allGeometry -allTopology -constant -noZero
+cp -rp Zero 0
+cp -p ZeroSRG/pointMotionU 0
+runApplication surfRoughGen
+cp -p Zero/pointMotionU 0
+rm 0/cellMotionU
+
+runApplication checkMesh -allGeometry -allTopology

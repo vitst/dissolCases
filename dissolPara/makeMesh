@@ -1,7 +1,0 @@
-#!/bin/sh
-cd ${0%/*} || exit 1    # Generate mesh from stl files
-
-cartesian2DMesh 2>&1 | tee log.cartesian2DMesh
-checkMesh -allGeometry -allTopology -constant -noZero 2>&1 | tee log.checkMesh 2>&1
-
-#------------------------------------------------------------------------------

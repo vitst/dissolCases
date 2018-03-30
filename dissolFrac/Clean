@@ -1,11 +1,9 @@
 #!/bin/sh
-cd ${0%/*} || exit 1    # clean case
+cd ${0%/*} || exit 1    # clean case: everything
 
-# Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/CleanFunctions
 
 cleanCase
-rm -rf processor* 0
-rm -f constant/polyMesh/boundary
+rm -rf 0
 
 # ------------------------------------------------------------------- #

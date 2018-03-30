@@ -32,16 +32,21 @@ else
         cat system/decomposeParDict.template \
             | sed "/NX/s//$Nx/" | sed "/NY/s//$Ny/" \
             | sed "/N/s//$N/" > system/decomposeParDict
-        decomposePar -copyUniform 2>&1 | tee log.decompose
+        decomposePar -copyUniform
     fi
 
-    mpirun -np $N -hostfile hosts dissolFoam -parallel 2>&1 | tee log.dissolFoam
-
-    diff 0/C Zero/C > /dev/null 2>&1 
-    if [ $? == 0 ]; then
-        reconstructPar -withZero 2>&1 | tee log.reconstruct
+    if [ -e hosts ]; then
+        mpirun -np $N -hostfile hosts dissolFoam -parallel 2>&1 \
+            | tee log.dissolFoam
     else
-        reconstructPar -newTimes 2>&1 | tee log.reconstruct
+        mpirun -np $N dissolFoam -parallel 2>&1 | tee log.dissolFoam
+    fi
+
+    diff 0/p Zero/p > /dev/null 2>&1 
+    if [ $? == 0 ]; then
+        reconstructPar -withZero
+    else
+        reconstructPar -newTimes
     fi
 fi
 

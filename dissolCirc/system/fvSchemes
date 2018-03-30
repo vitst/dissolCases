@@ -15,11 +15,6 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
-{
-    default         steadyState;
-}
-
 gradSchemes
 {
     default         Gauss linear;
@@ -27,8 +22,7 @@ gradSchemes
 
 divSchemes
 {
-    default         Gauss linearUpwind grad(C);
-//    default         bounded Gauss upwind;
+    default         bounded Gauss linearUpwind grad(C);
 }
 
 laplacianSchemes

@@ -18,14 +18,13 @@ FoamFile
 
 dynamicFvMesh      dynamicMotionSolverFvMesh;
 
-motionSolverLibs ("libfvMotionSolvers.so");
+motionSolverLibs ("libvelocityDeltatLaplacianFvMotionSolver.so");
 
-solver             velocityLaplacian;
+solver             velocityDeltatLaplacian;
 
-velocityLaplacianCoeffs
+velocityDeltatLaplacianCoeffs
 {
     diffusivity    uniform;
-//    diffusivity    quadratic inverseDistance (wall);
-//    diffusivity    inverseDistance (wall);
+    tolerance      1e-4;
 }
 

@@ -1,0 +1,17 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # create mesh from stl files with snappyHex
+
+blockMesh -dict system/box.blockMeshDict
+
+surfaceFeatureExtract
+
+snappyHexMesh -overwrite
+
+transformPoints -scale '(1 1 0.5)'   # transform points to 0 < z < 1/2
+
+orderBoundaries -overwrite
+
+checkMesh -allGeometry -allTopology -constant -noZero 2>&1 \
+    | tee log.checkMesh 2>&1
+
+# ------------------------------------------------------------------- #

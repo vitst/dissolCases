@@ -1,4 +1,4 @@
-#dissolCases: Case files for dissolFoam snapshot dissol1706:
+# dissolCases: Case files for dissolFoam snapshot dissol1706:
 
 The cases were tested with OpenFOAM-v1706, together with the libraries and solvers from the following commits:
 <br>dissolFoam      commit e8a926d 

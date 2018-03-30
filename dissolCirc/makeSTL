@@ -1,0 +1,29 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# use genBlockMeshDict to make the object mesh
+python $WM_PROJECT_USER_DIR/applications/utilities/genBlockMeshDict/runGen.py -g cylinder
+python $WM_PROJECT_USER_DIR/applications/utilities/genBlockMeshDict/runGen.py -d genDict
+mv blockMeshDict system/obj.blockMeshDict
+rm genDict
+
+# generate mesh for obj
+blockMesh -dict system/obj.blockMeshDict
+
+# get object surface as a ribbon - transform points to match box
+mkdir -p constant/triSurface
+surfaceMeshTriangulate -patches "(walls)" \
+    constant/triSurface/obj.stl
+surfaceTransformPoints -scale '(1 1 2)' \
+    constant/triSurface/obj.stl constant/triSurface/obj.stl
+surfaceTransformPoints -translate '(19 16.5 -0.5)' \
+    constant/triSurface/obj.stl constant/triSurface/obj.stl
+
+# fix the orientation
+surfaceOrient -inside constant/triSurface/obj.stl "(0 0 0)" \
+    constant/triSurface/obj.stl
+
+# edit patch name from cylinder generator
+sed -i -e '/walls/s//solubleWall/' constant/triSurface/obj.stl
+
+# ------------------------------------------------------------------- #

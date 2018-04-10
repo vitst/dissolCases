@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointVectorField;
+    location    "0";
+    object      pointMotionU;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 0 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    inlet
+    {
+      type            fixedValue;
+      value           uniform (0 0 0);
+    }
+
+    outlet
+    {
+      type            fixedValue;
+      value           uniform (0 0 0);
+    }
+
+    insolubleX
+    {
+      type            fixedNormalSlip;
+      value           uniform (0 0 0);
+      n               (1 0 0);
+    }
+
+    insolubleY
+    {
+      type            fixedNormalSlip;
+      value           uniform (0 0 0);
+      n               (0 1 0);
+    }
+
+    "insolubleZ.*"
+    {
+      type            fixedNormalSlip;
+      value           uniform (0 0 0);
+      n               (0 0 1);
+    }
+
+    solubleWall
+    {
+        type            codedNormalMotionSlip;
+        value           uniform (0 0 0);
+        name            codedNMSroughness;
+
+        codeInclude
+        #{
+            #include "addToRunTimeSelectionTable.H"
+            #include "plane.H"
+            #include "volFields.H"
+            #include "pointPatchFields.H"
+            #include "roughnessGenerator.H"
+        #};
+            
+        codeOptions
+        #{
+            -I$(WM_PROJECT_USER_DIR)/applications/lnInclude
+        #};
+
+        code
+        #{
+            #include "../../constant/bcInclude/surfaceRoughnessMotion.H"
+        #};
+    }
+}
+
+// ************************************************************************* //

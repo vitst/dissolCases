@@ -49,11 +49,7 @@ libs
 (
     "libdissolMotionPointPatchVectorField.so"
     "libvelocityDeltatLaplacianFvMotionSolver.so"
-    "libnormalMotionSlipBasePointPatchVectorField.so"
-    //"libcodedNormalMotionSlipPointPatchField.so"
     "libcodedNormalMotionSlipPointPatchVectorField.so"
-    "libnormalMotionSlipPointPatchVectorField.so"
-    "libnormalMotionSlipFvPatchVectorField.so"
     "libcodedNormalMotionSlipFvPatchVectorField.so"
     "libroughnessGenerator.so"
 );

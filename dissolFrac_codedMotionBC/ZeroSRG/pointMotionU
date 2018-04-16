@@ -58,7 +58,7 @@ boundaryField
     {
         type            codedNormalMotionSlip;
         value           uniform (0 0 0);
-        name            codedNMSroughness;
+        name            codedSurfaceMotion;
 
         codeInclude
         #{
@@ -76,7 +76,7 @@ boundaryField
 
         code
         #{
-            #include "../../constant/bcInclude/surfaceRoughnessMotion.H"
+            #include "../../constant/bcInclude/surfaceMotion.H"
         #};
     }
 }

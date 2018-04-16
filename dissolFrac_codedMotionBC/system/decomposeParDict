@@ -15,9 +15,9 @@ FoamFile
     }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-nx  8;                         // Parameters nx, ny, n to be set by sed
+nx  4;                         // Parameters nx, ny, n to be set by sed
 ny  1;
-n   8;
+n   4;
 
 numberOfSubdomains	$n;
 

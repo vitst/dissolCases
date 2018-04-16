@@ -57,7 +57,7 @@ boundaryField
     {
         type            codedNormalMotionSlip;
         value           uniform (0 0 0);
-        name            codedNMSgradC;
+        name            codedGradC;
 
         codeInclude
         #{
@@ -74,7 +74,7 @@ boundaryField
 
         code
         #{
-            #include "../../constant/bcInclude/concentrationGradiendMotion.H"
+            #include "../../constant/bcInclude/gradCMotion.H"
         #};
     }
 }
